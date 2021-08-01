@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Component } from "react";
+import Contacts from "./Components/Contacts";
+import ContactForm from "./Components/ContactForm";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      contacts: [],
+    };
+  }
+
+  addNewContact = (contact) => {
+    contact.id = 100 + Math.random() * 459;
+    this.setState({
+      contacts: [...this.state.contacts, contact],
+    });
+  };
+
+  deleteContact = (id) => {
+    let deleteContactId = this.state.contacts.filter(
+      (contact) => contact.id !== id
+    );
+    this.setState({ users: deleteContactId });
+  };
+  render() {
+    return (
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-4">
+            <h1>Contact Form</h1>
+            <ContactForm newContact={this.addNewContact} />
+          </div>
+          <div className="col-md-8">
+            <h1>Contact List</h1>
+            <Contacts
+              contactsInfo={this.state.contacts}
+              deleteContact={this.deleteContact}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
