@@ -23,7 +23,7 @@ class App extends Component {
     let deleteContactId = this.state.contacts.filter(
       (contact) => contact.id !== id
     );
-    this.setState({ users: deleteContactId });
+    this.setState({ contacts: deleteContactId });
   };
   render() {
     return (
