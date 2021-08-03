@@ -10,6 +10,7 @@ const Contacts = (props) => {
             contactDetails={contact}
             key={index}
             deleteContact={props.deleteContact}
+            updateContact={props.updateContact}
           />
         );
       })}

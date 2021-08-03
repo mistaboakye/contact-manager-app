@@ -25,6 +25,14 @@ class App extends Component {
     );
     this.setState({ contacts: deleteContactId });
   };
+
+  updateContact = (id, editedContact) => {
+    this.setState({
+      contacts: this.state.contacts.map((contact) =>
+        contact.id === id ? editedContact : contact
+      ),
+    });
+  };
   render() {
     return (
       <div className="container-fluid">
@@ -38,6 +46,7 @@ class App extends Component {
             <Contacts
               contactsInfo={this.state.contacts}
               deleteContact={this.deleteContact}
+              updateContact={this.updateContact}
             />
           </div>
         </div>
