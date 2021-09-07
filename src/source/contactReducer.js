@@ -21,7 +21,7 @@ const contactReducer = (state = firstState, action) => {
       return { ...state, contacts: [...state.contacts, newContact] };
 
     case "DELETE_CONTACT":
-      const filteredContact = state.contacts.filters(
+      const filteredContact = state.contacts.filter(
         (contact) => contact.id !== action.data
       );
       return { ...state, contacts: filteredContact };
