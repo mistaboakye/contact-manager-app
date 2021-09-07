@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import { updateContact } from "../source/contactAction";
 
-export class ContactForm extends Component {
+export class EditContactForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,4 +74,11 @@ export class ContactForm extends Component {
   }
 }
 
-export default ContactForm;
+const mapStatetoProps = (state) => ({
+  contacts: state.contacts,
+});
+
+const mapDispatchToProps = {
+  updateContact,
+};
+export default connect(mapStatetoProps, mapDispatchToProps)(EditContactForm);

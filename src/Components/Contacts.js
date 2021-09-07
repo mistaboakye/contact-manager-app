@@ -4,11 +4,11 @@ import Contact from "./Contact";
 const Contacts = (props) => {
   return (
     <Container>
-      {props.contactsInfo.map((contact, index) => {
+      {props.contactsInfo.map((contact) => {
         return (
           <Contact
             contactDetails={contact}
-            key={index}
+            key={contact.id}
             deleteContact={props.deleteContact}
             updateContact={props.updateContact}
           />
